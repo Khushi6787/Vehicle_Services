@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+      <title>Facelet Title</title>
+        <link rel="stylesheet" href="./assets/css/style.css"/>
+        <link rel="stylesheet" href="./assets/css/responsive.css"/>
+        <link rel="stylesheet" href="./assets/fonts/flaticon.css" />
+
+        <!--favicon-->
+        <link rel="apple-touch-icon" sizes="180x180" href="./user/assets/images/favicon/apple-touch-icon.png"></link>
+        <link rel="icon" type="image/png" href="./user/assets/images/favicon/favicon-32x32.png" sizes="32x32"></link>
+        <link rel="icon" type="image/png" href="./user/assets/images/favicon/favicon-16x16.png" sizes="16x16"></link>
+    </h:head>
+    <h:body>
+         <div class="header-top">
+            <div class="container clearfix">
+                <!--Top Left-->
+                <div class="top-left pull-left">
+                    <ul class="links-nav clearfix">
+                        <li><a href="#"><span class="fa fa-phone"></span> Call:  123 4561 5523 </a></li>
+                        <li><a href="#"><span class="fa fa-envelope"></span>Email:  contact@sample.com</a></li>
+                    </ul>
+                </div>
+                <!--Top Right-->
+                <div class="top-right pull-right">
+                    <div class="social-links clearfix">
+                        <a href="#"><span class="fa fa-facebook-f"></span></a>
+                        <a href="#"><span class="fa fa-twitter"></span></a>
+                        <a href="#"><span class="fa fa-linkedin"></span></a>
+                        <a href="#"><span class="fa fa-instagram"></span></a>
+                        <a href="#"><span class="fa fa-pinterest-p"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Header Top End -->
+
+        <section class="mainmenu-area stricky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="main-logo">
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt=""/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 menu-column">
+                        <nav class="main-menu">
+                            <div class="navbar-header">     
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse " style="z-index: 11 !important">
+                                <ul class="navigation ">
+
+                                    <li class="current"><a href="/vehicle/">Home</a></li>
+
+                                    <li><a href="user/aboutus.xhtml">About</a></li>
+
+                                    <li class="dropdown"><a href="#">Services</a>
+                                        <ul>
+                                            <li><a href="user/showServices.xhtml">Services</a></li>
+                                            <c:forEach var="s" items="#{userSide.services}">
+                                                <li><a href="service.html">#{s.servicename}</a></li>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown"><a href="user/showGallery.xhtml">Gallery</a>
+
+                                    </li>
+                                    <a href="user/header.xhtml"></a>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+
+                                <ul class="mobile-menu clearfix">
+
+                                    <li><a href="index.html">Home</a></li>
+
+                                    <li><a href="user/aboutus.xhtml">About</a></li>
+
+                                    <li class="dropdown"><a href="#">Services</a>
+                                        <ul>
+                                            <li><a href="user/showServices.xhtml">Services</a></li>
+
+                                        </ul>
+                                    </li>
+
+
+                                    <li><a href="contact.html">Contact</a></li>
+
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <h:form>
+              <section class="contact_us">
+            <div class="container">   
+                <div class="sec-title text-center">
+                    <h2><span> Registration</span> </h2>
+
+                </div>
+                <div class="default-form-area">
+                    <h:form id="contact-form" class="default-form">
+                        <div class="row clearfix">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group style-two">
+                                    <h:outputLabel class="col-span-12 ti-form-label" for="username">User Name
+                                    </h:outputLabel> 
+                                    <h:inputText p:placeholder="Enter User Name" class="form-control" value="#{userSide.username}" required="true" requiredMessage="User name is required!!">
+                                        <h:message for="username" style="color:red"></h:message>
+                                    </h:inputText>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <div class="form-group style-two">
+                                    <h:outputLabel class="col-span-12 ti-form-label" for="address">Address
+                                    </h:outputLabel> 
+                                    <h:inputText class="form-control" value="#{userSide.address}" p:placeholder="Enter Address" required="true" requiredMessage="Address is required!!">
+                                    </h:inputText>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <div class="form-group style-two">
+                                    <h:outputLabel class="col-span-12 ti-form-label" for="email">Email
+                                    </h:outputLabel> 
+                                    <h:inputText class="form-control" value="#{userSide.email}" p:placeholder="Enter Email" required="true" requiredMessage="Email is required!!">
+                                        <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                    </h:inputText>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <div class="form-group style-two">
+                                    <h:outputLabel class="col-span-12 ti-form-label" for="mobileno">Mobile No.
+                                    </h:outputLabel> 
+                                    <h:inputText class="form-control" value="#{userSide.mobileno}" p:placeholder="Enter Mobile No" required="true" requiredMessage="Mobile Number is required!!">
+                                    </h:inputText>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group style-two">
+                                    <h:outputLabel class="col-span-12 ti-form-label" for="password">Password
+                                    </h:outputLabel> 
+                                    <h:inputSecret class="form-control" value="#{userSide.password}" p:placeholder="Enter Password" required="true" requiredMessage="Password is required!!">
+                                    </h:inputSecret>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group style-two">
+                                    <h:outputLabel class="col-span-12 ti-form-label" for="password">Confirm Password
+                                    </h:outputLabel> 
+                                    <h:inputSecret class="form-control" p:placeholder="Enter Confirmation Password" required="true" requiredMessage="required!">
+                                    </h:inputSecret>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-section-btn text-center">
+                            <div class="form-group style-two">
+                                
+                                 <h:commandButton action = "#{userSide.addUser()}" value = "Submit" class="thm-btn style-2"/>
+                            </div>
+                        </div> 
+
+                    </h:form>
+                </div>          
+            </div>
+        </section>
+           
+        </h:form>
+        
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>
+

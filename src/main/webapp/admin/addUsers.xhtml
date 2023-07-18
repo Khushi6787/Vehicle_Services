@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      lang="en" dir="ltr" data-nav-layout="vertical" class="light" data-header-styles="light" data-menu-styles="dark"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <ui:include src="head.xhtml"/>
+    </h:head>
+    <h:body>
+
+        <f:view>
+
+            <ui:include src="header.xhtml"/>
+            <div class="content">
+                <div class="main-content">
+                    <div class="block justify-between page-header sm:flex">
+
+                        <ol class="flex items-center whitespace-nowrap min-w-0">
+                            <li class="text-sm"> <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate" href="index.xhtml"> Home <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i> </a> </li>
+                            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 "><a class="flex items-center text-primary hover:text-primary dark:text-primary truncate" href="showUsers.xhtml"> Users <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i></a></li>
+                            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page"> Add User </li>
+                        </ol>
+                    </div>
+                    <button type="button" class="ti-btn ti-btn-primary">  
+                        <h:form>
+                            <h:commandButton value="Back" type="submit" action="#{userCDIBean.goToDisplay()}"/>
+                        </h:form>
+                    </button>
+                    <br></br><br></br>
+
+                    <div class="grid grid-cols-12 gap-x-5">
+                        <div class="col-span-12 xl:col-span-7">
+                            <div class="col-span-12 xxl:col-span-6"> 
+                                <div class="box"> 
+                                    <div class="box-header"> 
+                                        <h5 class="box-title">Add User
+                                        </h5> 
+                                    </div> 
+                                    <div class="box-body"> 
+                                        <h:form class="space-y-3"> 
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="name">User Name
+                                                </h:outputLabel> 
+                                                <h:inputText p:placeholder="Enter User Name" class="col-span-9 ti-form-input" id="username" value="#{userCDIBean.username}" required="true" requiredMessage="user Name Name is required"/> 
+                                                <h:message for="username" style="color: red" />
+                                            </div> 
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="name">Address
+                                                </h:outputLabel> 
+                                                <h:inputText p:placeholder="Enter Address" class="col-span-9 ti-form-input" id="address" value="#{userCDIBean.address}" required="true" requiredMessage="Address Name is required"/> 
+                                                <h:message for="address" style="color: red" />
+                                            </div> 
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="email">Email
+                                                </h:outputLabel> 
+                                                <h:inputText p:placeholder="Enter Email" class="col-span-9 ti-form-input" id="email" value="#{userCDIBean.email}" required="true" requiredMessage="Email Name is required"/> 
+                                                <h:message for="email" style="color: red" />
+                                            </div> 
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="pincode">Mobile No
+                                                </h:outputLabel> 
+                                                <h:inputText p:placeholder="Enter Mobile Number" class="col-span-9 ti-form-h:input" id="mobileno" value="#{userCDIBean.mobileno}" required="true" requiredMessage="Mobile No is required"/> 
+                                                <h:message for="mobileno" style="color: red" />
+                                            </div> 
+                                             <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="password">Password
+                                                </h:outputLabel> 
+                                                 <h:inputSecret p:placeholder="Enter Password" class="col-span-9 ti-form-h:input" id="password" value="#{userCDIBean.password}" required="true" requiredMessage="password is required"/> 
+                                                <h:message for="password" style="color: red" />
+                                            </div> 
+                                             <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="usertype">User Type
+                                                </h:outputLabel> 
+                                                 <h:inputText p:placeholder="Enter User Type" class="col-span-9 ti-form-h:input" id="usertype" value="#{userCDIBean.usertype}" required="true" requiredMessage="usertype is required"/> 
+                                                <h:message for="usertype" style="color: red" />
+                                            </div> 
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <div class="col-span-3"> 
+                                                </div> 
+
+                                            </div> 
+                                            <div class="grid grid-cols-12 gap-x-6"> 
+                                                <div class="col-span-3"> 
+                                                </div> 
+                                                <div class="col-span-9">
+
+                                                    <c:if test="#{userCDIBean.userIDPK == 0}">
+                                                        <h:commandButton class="ti-btn ti-btn-primary" id="btnAdd" value="Submit" action="#{userCDIBean.addUser()}"/>
+                                                    </c:if>
+                                                    <c:if test="#{userCDIBean.userIDPK != 0}">
+                                                        <h:commandButton class="ti-btn ti-btn-primary" id="btn" value="Update" action="#{userCDIBean.updateUser()}"/>
+                                                    </c:if> 
+                                                </div> 
+                                            </div> 
+                                        </h:form> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:view>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>

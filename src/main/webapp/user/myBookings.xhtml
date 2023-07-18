@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="./assets/css/style.css"/>
+        <link rel="stylesheet" href="./assets/css/responsive.css"/>
+        <link rel="stylesheet" href="./assets/fonts/flaticon.css" />
+
+        <!--favicon-->
+        <link rel="apple-touch-icon" sizes="180x180" href="./user/assets/images/favicon/apple-touch-icon.png"></link>
+        <link rel="icon" type="image/png" href="./user/assets/images/favicon/favicon-32x32.png" sizes="32x32"></link>
+        <link rel="icon" type="image/png" href="./user/assets/images/favicon/favicon-16x16.png" sizes="16x16"></link>
+    </h:head>
+    <h:body>
+
+        <ui:include src="header.xhtml"></ui:include>
+        <h:form>
+            <section class="contact_us">
+                <div class="container">   
+                    <div class="sec-title text-center">
+                        <h2>My <span> Bookings </span> </h2>
+                    </div>
+                    <h:dataTable value="#{userSide.findallbooking()}" var="p">  
+                        <h:column>  
+                            <f:facet name="header">Request name</f:facet>  
+                            <h:outputText value="#{p.requestname}"/>  
+                        </h:column>  
+                        <h:column>  
+                            <f:facet name="header">Date</f:facet>  
+                            <h:outputText value="#{p.date}"/>  
+                        </h:column>
+                        <h:column>  
+                            <f:facet name="header">Time</f:facet>  
+                            <h:outputText value="#{p.time}"/>  
+                        </h:column>
+                    </h:dataTable>   
+                </div>
+            </section>
+
+
+        </h:form>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>
+

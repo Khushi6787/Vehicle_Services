@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      lang="en" dir="ltr" data-nav-layout="vertical" class="light" data-header-styles="light" data-menu-styles="dark"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <link rel="stylesheet" href="assets/css/responsive.css"/>
+        <link rel="stylesheet" href="assets/fonts/flaticon.css" />
+
+        <!--favicon-->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png"></link>
+        <link rel="icon" type="image/png" href="assets/images/favicon/favicon-32x32.png" sizes="32x32"></link>
+        <link rel="icon" type="image/png" href="assets/images/favicon/favicon-16x16.png" sizes="16x16"></link>
+
+    </h:head>
+    <h:body>
+
+        <f:view>
+
+
+            <section class="contact_us">
+                <div class="container">   
+                    <div class="sec-title text-center">
+                        <h2>Log<span> </span> In</h2>
+
+                    </div>
+                    <div class="default-form-area">
+                        <h:form id="contact-form" class="default-form">
+                            
+                            <div class="row clearfix">
+                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                    <div class="form-group style-two">
+                                        <h:outputLabel class="col-span-12 ti-form-label" for="email">Email
+                                        </h:outputLabel> 
+                                        <h:inputText p:placeholder="Enter Email" class="col-span-9 ti-form-input" value="#{userSide.email}" required="true" requiredMessage="Email is required!!">
+                                            <h:message for="email" style="color:red"></h:message>
+                                        </h:inputText>
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-7 col-sm-7 col-xs-12">
+                                    <div class="form-group style-two">
+                                        <h:outputLabel class="col-span-12 ti-form-label" for="Password">Password
+                                        </h:outputLabel> 
+                                        <h:inputSecret p:placeholder="Enter Password" class="col-span-9 ti-form-input" value="#{userSide.password}" id="password" required="true" requiredMessage="Password is required!!"> 
+                                            <h:message for="username" style="color:red"></h:message>
+                                        </h:inputSecret>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="contact-section-btn text-center">
+                                <div class="form-group style-two">
+                                    <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value=""/>
+                                    <h:commandButton class="thm-btn style-2" action="#{userSide.login()}" value="Submit"></h:commandButton>
+                                </div>
+                            </div> 
+                            <h3 style="color: red">#{userSide.message}</h3>
+                            <div class="contact-section-btn text-center">
+                                <h:outputLabel>Don't have an account!! <a href="registration1.xhtml">Sign Up</a>
+                                </h:outputLabel> 
+                            </div> 
+                        </h:form>
+                    </div>          
+                </div>
+            </section>
+
+
+        </f:view>
+
+    </h:body>
+</html>

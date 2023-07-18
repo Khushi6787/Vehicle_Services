@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      lang="en" dir="ltr" data-nav-layout="vertical" class="light" data-header-styles="light" data-menu-styles="dark"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <ui:include src="head.xhtml"/>
+    </h:head>
+    <h:body>
+
+        <f:view>
+
+            <ui:include src="header.xhtml"/>
+            <div class="content">
+                <div class="main-content">
+                    <div class="block justify-between page-header sm:flex">
+
+                        <ol class="flex items-center whitespace-nowrap min-w-0">
+                            <li class="text-sm"> <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate" href="index.xhtml"> Home <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i> </a> </li>
+                            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 "> Users <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i></li>
+                            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page"> User List </li>
+                        </ol>
+                    </div>
+                    <button type="button" class="ti-btn ti-btn-primary"> <h:link outcome="addUsers.xhtml">Add User</h:link>
+                    </button>
+                    <br></br><br></br>
+                    <div class="grid grid-cols-12 gap-6"> 
+                        <div class="col-span-12"> 
+                            <div class="box overflow-hidden"> 
+                                <div class="box-header"> 
+                                    <h5 class="box-title">Show Users
+                                    </h5> 
+                                </div> 
+                                <div class="box-body p-0"> 
+                                    <div class="-m-1.5 overflow-auto"> 
+                                        <div class="p-1.5 min-w-full inline-block align-middle"> 
+                                            <div class="overflow-hidden">
+                                                <div class="table border-collapse table-auto w-full divide-y divide-gray-200 dark:divide-white/10"> 
+                                                    <div class="table-header-group"> 
+                                                        <div class="table-row"> 
+                                                            <h:form>
+                                                                <h:dataTable value="#{userCDIBean.findalluser()}" var="item" class="ti-custom-table ti-custom-table-head">
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">No</f:facet>
+                                                                                #{item.userIDPK}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Name</f:facet>
+                                                                                #{item.username}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Address</f:facet>
+                                                                                #{item.address}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Email</f:facet>
+                                                                                #{item.email}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Mobile No</f:facet>
+                                                                                #{item.mobileno}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th>
+                                                                        <h:column><f:facet name="header">Action</f:facet>
+                                                                            <h:commandLink action="#{userCDIBean.deleteUser(item.userIDPK)}" onclick="return confirm('Are you sure you want to delete?')" class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger"> 
+                                                                                <i class="ti ti-trash"></i> 
+
+                                                                            </h:commandLink> 
+
+                                                                            <h:commandLink action="#{userCDIBean.editUser(item.userIDPK)}" class="customer-edit m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
+                                                                                <i class="ti ti-pencil"></i>
+                                                                            </h:commandLink>
+
+                                                                        </h:column>
+                                                                    </th>
+                                                                </h:dataTable>
+                                                            </h:form>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div>
+            </div>
+        </f:view>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>
+
+
+

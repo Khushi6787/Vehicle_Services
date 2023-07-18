@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="./assets/css/style.css"/>
+        <link rel="stylesheet" href="./assets/css/responsive.css"/>
+        <link rel="stylesheet" href="./assets/fonts/flaticon.css" />
+
+        <!--favicon-->
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png"></link>
+        <link rel="icon" type="image/png" href="./assets/images/favicon/favicon-32x32.png" sizes="32x32"></link>
+        <link rel="icon" type="image/png" href="./assets/images/favicon/favicon-16x16.png" sizes="16x16"></link>
+    </h:head>
+    <h:body>
+        <ui:include src="header.xhtml"></ui:include>
+        <section class="page-title">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-md-6 col-sm-6 col-xs-12 pull-left">
+                        <h1>gallery</h1>
+                        <p>Keep your car running smoothly and looking fresh with our premium Car Servicing </p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 pull-right text-right path"><a href="index.xhtml">Home  /</a><a href="#">gallery</a></div>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+        </section>
+        <section class="our-gallery">
+            <div class="container">
+                <div class="row">
+                    <c:forEach items="#{userSide.findallgallery()}" var="s">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="single-item">
+                                <div class="img-holder">							
+                                    <img src="/vehicle/uploads/#{s.image}" alt="Awesome Image"/>
+                                    <div class="overlay">
+                                        <div class="inner">
+                                            <div class="social">
+                                                <a href="images/gallery/g-1.jpg" data-fancybox-group="example-gallery" class="view lightbox-image"><i class="flaticon-add"></i></a>	
+                                                <h4>Car Repair</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </section>
+
+        <ui:include src="footer.xhtml"></ui:include>
+    </h:body>
+</html>
+

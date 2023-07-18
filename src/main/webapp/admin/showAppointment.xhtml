@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      lang="en" dir="ltr" data-nav-layout="vertical" class="light" data-header-styles="light" data-menu-styles="dark"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <ui:include src="head.xhtml"/>
+    </h:head>
+    <h:body>
+
+        <f:view>
+
+            <ui:include src="header.xhtml"/>
+            <div class="content">
+                <div class="main-content">
+                    <div class="block justify-between page-header sm:flex">
+
+                        <ol class="flex items-center whitespace-nowrap min-w-0">
+                            <li class="text-sm"> <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate" href="index.xhtml"> Home <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i> </a> </li>
+                            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 "> Appointment <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i></li>
+                            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page"> Appointments List </li>
+                        </ol>
+                    </div>
+                    <button type="button" class="ti-btn ti-btn-primary"> <h:link outcome="addAppointment.xhtml">Add Appointment</h:link>
+                    </button>
+                    <br></br><br></br>
+                    <div class="grid grid-cols-12 gap-6"> 
+                        <div class="col-span-12"> 
+                            <div class="box overflow-hidden"> 
+                                <div class="box-header"> 
+                                    <h5 class="box-title">Show Appointments
+                                    </h5> 
+                                </div> 
+                                <div class="box-body p-0"> 
+                                    <div class="-m-1.5 overflow-auto"> 
+                                        <div class="p-1.5 min-w-full inline-block align-middle"> 
+                                            <div class="overflow-hidden">
+                                                <div class="table border-collapse table-auto w-full divide-y divide-gray-200 dark:divide-white/10"> 
+                                                    <div class="table-header-group"> 
+                                                        <div class="table-row"> 
+                                                            <h:form>
+                                                                <h:dataTable value="#{appointmentCDIBean.findallrequest()}" var="item" class="ti-custom-table ti-custom-table-head">
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">No</f:facet>
+                                                                                #{item.requestIDPK}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Area Name</f:facet>
+                                                                                #{item.areaIDFK.areaname}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Service Name</f:facet>
+                                                                                #{item.serviceIDFK.servicename}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Request Name</f:facet>
+                                                                                #{item.requestname}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Added By</f:facet>
+                                                                                #{item.userIDFK.username}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Mechanic Name</f:facet>
+                                                                                #{item.mechanicIDFK.mechanicname}
+                                                                        </h:column>
+                                                                    </th> 
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Status</f:facet>
+                                                                                #{item.status}
+                                                                        </h:column>
+                                                                    </th> 
+
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Payment</f:facet>
+                                                                                #{item.payment}
+                                                                        </h:column>
+                                                                    </th> 
+
+                                                                    <th scope="col" class="table-cell px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                                        <h:column><f:facet name="header">Cost</f:facet>
+                                                                                #{item.cost}
+                                                                        </h:column>
+                                                                    </th> 
+
+                                                                    <c:if test="#{appointmentCDIBean.status == 0}">
+                                                                        <h:commandButton class="ti-btn ti-btn-primary" id="btnAdd" value="Submit" action="#{appointmentCDIBean.updateStatus()}"/>
+                                                                    </c:if>
+                                                                    
+
+                                                                    <th>
+                                                                        <h:column><f:facet name="header">Action</f:facet>
+                                                                            <h:commandLink action="#{appointmentCDIBean.editRequest(item.requestIDPK)}" class="customer-edit m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
+                                                                                <i class="ti ti-pencil"></i>
+                                                                            </h:commandLink>
+
+                                                                        </h:column>
+                                                                    </th>
+                                                                </h:dataTable>
+                                                            </h:form>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div>
+
+        </f:view>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>
+
+
+

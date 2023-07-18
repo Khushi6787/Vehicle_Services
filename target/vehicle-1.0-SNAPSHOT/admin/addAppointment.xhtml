@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      lang="en" dir="ltr" data-nav-layout="vertical" class="light" data-header-styles="light" data-menu-styles="dark"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <ui:include src="head.xhtml"/>
+    </h:head>
+    <h:body>
+
+        <f:view>
+
+            <ui:include src="header.xhtml"/>
+            <div class="content">
+                <div class="main-content">
+                    <div class="block justify-between page-header sm:flex">
+
+                        <ol class="flex items-center whitespace-nowrap min-w-0">
+                            <li class="text-sm"> <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate" href="index.xhtml"> Home <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i> </a> </li>
+                            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 "><a class="flex items-center text-primary hover:text-primary dark:text-primary truncate" href="showAppointment.xhtml"> Appointment <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i></a></li>
+                            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page"> Add Appointment/Request </li>
+                        </ol>
+                    </div>
+                    <button type="button" class="ti-btn ti-btn-primary">  
+                        <h:form class="form-no-horizontal-spacing" id="form-condensed" enctype="multipart/form-data">
+                            <h:commandButton value="Back" type="submit" action="#{appointmentCDIBean.goToDisplay()}"/>
+                        </h:form>
+                    </button>
+                    <br></br><br></br>
+
+                    <div class="grid grid-cols-12 gap-x-5">
+                        <div class="col-span-12 xl:col-span-7">
+                            <div class="col-span-12 xxl:col-span-6"> 
+                                <div class="box"> 
+                                    <div class="box-header"> 
+                                        <h5 class="box-title">Add Appointment
+                                        </h5> 
+                                    </div> 
+                                    <div class="box-body"> 
+                                        <h:form class="space-y-3" enctype="multipart/form-data"> 
+
+                                            <div></div>
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="areanamw">Area
+                                                </h:outputLabel> 
+                                                <button id="hs-dropdown-default" type="button"> 
+                                                    <h:selectOneMenu  class="form-control" value="#{appointmentCDIBean.areaIDFK}" required="true" label="Select Area">
+
+                                                        <f:selectItems id="areaname" value="#{areaCDIBean.findallarea()}" var="Area" itemValue="#{Area.areaIDPK}" itemLabel="#{Area.areaname}"></f:selectItems>
+                                                    </h:selectOneMenu> 
+                                                </button>
+                                                <h:message for="servicename" style="color: red" />
+                                            </div>
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="name">Service
+                                                </h:outputLabel> 
+                                                <button id="hs-dropdown-default" type="button"> 
+                                                    <h:selectOneMenu  class="form-control" value="#{appointmentCDIBean.serviceIDFK}" label="Select Service">
+
+                                                        <f:selectItems id="servicename" value="#{serviceCDIBean.findallservice()}" var="Service" itemValue="#{Service.serviceIDPK}" itemLabel="#{Service.servicename}"></f:selectItems>
+                                                    </h:selectOneMenu> 
+                                                </button>
+                                            </div>
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="name">Request Name
+                                                </h:outputLabel> 
+                                                <h:inputText p:placeholder="Enter Request Name" class="col-span-9 ti-form-input" id="mechanicname" value="#{appointmentCDIBean.requestname}" required="true" requiredMessage="Request name is required"/> 
+                                                <h:message for="requestname" style="color: red" />
+                                            </div> 
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="name">User
+                                                </h:outputLabel> 
+                                                <button id="hs-dropdown-default" type="button"> 
+                                                    <h:selectOneMenu  class="form-control" value="#{appointmentCDIBean.userIDFK}" label="Select User">
+
+                                                        <f:selectItems id="username" value="#{userCDIBean.findalluser()}" var="User" itemValue="#{User.userIDPK}" itemLabel="#{User.username}"></f:selectItems>
+                                                    </h:selectOneMenu> 
+                                                </button>
+                                            </div>
+                                             <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="mechanic-name">Mechanic Name
+                                                </h:outputLabel> 
+                                                <button id="hs-dropdown-default" type="button"> 
+                                                    <h:selectOneMenu  class="form-control" value="#{appointmentCDIBean.mechanicIDFK}" required="true" label="Select Mechanic Name">
+
+                                                        <f:selectItems id="mechanic-name" value="#{mechanicCDIBean.findallmechanic()}" var="Mechanic" itemValue="#{Mechanic.mechanicIDPK}" itemLabel="#{Mechanic.mechanicname}"></f:selectItems>
+                                                    </h:selectOneMenu> 
+                                                </button>
+                                                <h:message for="servicename" style="color: red" />
+                                            </div>
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="name">Status
+                                                </h:outputLabel> 
+                                                <h:inputText p:placeholder="Enter Status" class="col-span-9 ti-form-input" id="Status" value="#{appointmentCDIBean.status}" required="true" requiredMessage="Status name is required"/> 
+                                                <h:message for="Status" style="color: red" />
+                                            </div> 
+                                             <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="name">Payment
+                                                </h:outputLabel> 
+                                                 <h:inputText p:placeholder="Enter Payment" class="col-span-9 ti-form-input" id="Payment" value="#{appointmentCDIBean.payment}" required="true" requiredMessage="Payment name is required"/> 
+                                                <h:message for="Payment" style="color: red" />
+                                            </div> 
+                                            
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <h:outputLabel class="col-span-3 ti-form-label" for="name">Cost
+                                                </h:outputLabel> 
+                                                 <h:inputText p:placeholder="Enter Cost" class="col-span-9 ti-form-input" id="cost" value="#{appointmentCDIBean.cost}" required="true" requiredMessage="Cost name is required"/> 
+                                                <h:message for="cost" style="color: red" />
+                                            </div> 
+                                            <div class="sm:grid grid-cols-12 gap-x-6"> 
+                                                <div class="col-span-3"> 
+                                                </div> 
+
+                                            </div> 
+                                            <div class="grid grid-cols-12 gap-x-6"> 
+                                                <div class="col-span-3"> 
+                                                </div> 
+                                                <div class="col-span-9">
+
+                                                    <c:if test="#{appointmentCDIBean.requestIDPK == 0}">
+                                                        <h:commandButton class="ti-btn ti-btn-primary" id="btnAdd" value="Submit" action="#{appointmentCDIBean.addRequest()}"/>
+                                                    </c:if>
+                                                    <c:if test="#{appointmentCDIBean.requestIDPK  != 0}">
+                                                        <h:commandButton class="ti-btn ti-btn-primary" id="btn" value="Update" action="#{appointmentCDIBean.updateRequest()}"/>
+                                                    </c:if> 
+                                                </div> 
+                                            </div> 
+                                        </h:form> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </f:view>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>

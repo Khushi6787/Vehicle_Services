@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <link rel="stylesheet" href="assets/css/responsive.css"/>
+        <link rel="stylesheet" href="assets/fonts/flaticon.css" />
+
+        <!--favicon-->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png"></link>
+        <link rel="icon" type="image/png" href="assets/images/favicon/favicon-32x32.png" sizes="32x32"></link>
+        <link rel="icon" type="image/png" href="assets/images/favicon/favicon-16x16.png" sizes="16x16"></link>
+
+    </h:head>
+    <h:body>
+
+        <div class="header-top">
+            <div class="container clearfix">
+                <!--Top Left-->
+                <div class="top-left pull-left">
+                    <ul class="links-nav clearfix">
+                        <li><a href="#"><span class="fa fa-phone"></span> Call:  123 4561 5523 </a></li>
+                        <li><a href="#"><span class="fa fa-envelope"></span>Email:  contact@sample.com</a></li>
+                    </ul>
+                </div>
+                <!--Top Right-->
+                <div class="top-right pull-right">
+                    <div class="social-links clearfix">
+                        <a href="#"><span class="fa fa-facebook-f"></span></a>
+                        <a href="#"><span class="fa fa-twitter"></span></a>
+                        <a href="#"><span class="fa fa-linkedin"></span></a>
+                        <a href="#"><span class="fa fa-instagram"></span></a>
+                        <a href="#"><span class="fa fa-pinterest-p"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Header Top End -->
+
+        <section class="mainmenu-area stricky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="main-logo">
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt=""/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 menu-column">
+                        <nav class="main-menu">
+                            <div class="navbar-header">     
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse " style="z-index: 11 !important">
+                                <ul class="navigation ">
+
+                                    <li class="current"><a href="user/index.xhtml">Home</a></li>
+
+                                    <li><a href="user/aboutus.xhtml">About</a></li>
+
+                                    <li class="dropdown"><a href="#">Services</a>
+                                        <ul>
+                                            <li><a href="user/showServices.xhtml">Services</a></li>
+                                            <c:forEach var="s" items="#{userSide.services}">
+                                                <li><a href="services.xhtml">#{s.servicename}</a></li>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown"><a href="user/showGallery.xhtml">Gallery</a>
+
+                                    </li>
+                                    <a href="user/header.xhtml"></a>
+                                     <li class="dropdown"><a href="#">Others</a>
+                                        <ul>
+                                            <li><a href="user/profile.xhtml">Profile</a></li>
+                                            <li><a href="user/myBookings.xhtml">Bookings</a></li>
+                                            <li><a href="user/myAppointments.xhtml">Appointments</a></li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <ul class="mobile-menu clearfix">
+
+                                    <li><a href="index.xhtml">Home</a></li>
+
+                                    <li><a href="user/aboutus.xhtml">About</a></li>
+
+                                    <li class="dropdown"><a href="#">Services</a>
+                                        <ul>
+                                            <li><a href="user/showServices.xhtml">Services</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown"><a href="#">Others</a>
+                                        <ul>
+                                            <li><a href="user/profile.xhtml">Profile</a></li>
+                                            <li><a href="user/myBookungs.xhtml">Bookings</a></li>
+                                            <li><a href="user/myAppointments.xhtml">Appointments</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </h:body>
+</html>
+
